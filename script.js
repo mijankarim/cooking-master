@@ -11,20 +11,25 @@ const errorHandler = () => {
 
 const submitHandler = () => {
   inputMeal = document.getElementById("inputMeal").value;
-   getMeals(inputMeal);
+  getMeals(inputMeal);
   document.getElementById("inputMeal").value = "";
 };
 
 const displayMeals = (data) => {
+  console.log(data);
   const mealsDiv = document.getElementById("meals");
+  mealsDiv.innerHTML = "";
+  document.getElementById("mealDetails").innerHTML ="";
   data.meals.forEach((meal) => {
     const mealDiv = document.createElement("div");
     mealDiv.className = "meal";
     mealDiv.innerHTML = `
+       <a href="#site-title">
         <div onclick="displayMealDetails('${meal.strMeal}')">
           <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
           <h3 class="meal-name">${meal.strMeal}</h3>
         </div>
+        </a>
       `;
     mealsDiv.appendChild(mealDiv);
   });
