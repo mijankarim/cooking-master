@@ -20,6 +20,7 @@ html { scroll-behavior: smooth; }
 
 .site-title a {
   text-decoration: none;
+  color: #3b2d64;
 }
 
 #search-box {
@@ -83,7 +84,7 @@ html { scroll-behavior: smooth; }
 
 .meal-details-card {
   background-color: #fff;
-  max-width: 435px;
+  max-width: 535px;
   margin: 50px auto 10px;
   width: 100%;
   border-radius: 10px;
