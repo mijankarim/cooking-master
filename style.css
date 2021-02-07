@@ -9,7 +9,7 @@ html { scroll-behavior: smooth; }
 
 .container {
   max-width: 1200px;
-  margin: 30px auto 50px;
+  margin: 50px auto;
 }
 
 .site-title {
@@ -98,6 +98,10 @@ html { scroll-behavior: smooth; }
   padding: 20px;
 }
 
+.meal-info h3{
+  font-size:24px;
+}
+
 #search-error h3 {
   font-size: 28px;
   text-align: center;
@@ -111,6 +115,15 @@ html { scroll-behavior: smooth; }
   padding-left: 0;
   list-style-position: inside;
   list-style-type: none;
+}
+
+.ingredient-list li{
+  margin-bottom:10px;
+}
+
+.ingredient-list li .far{
+  margin-right:10px;
+  color: #3b2d64 !important;
 }
 
 @media screen and (max-width: 768px) {

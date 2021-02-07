@@ -5,35 +5,36 @@ const getMeals = (name) => {
     .catch(() => errorHandler());
 };
 
-const errorHandler = () => {
-  document.getElementById("search-error").style.display = "block";
-};
-
 const submitHandler = () => {
   inputMeal = document.getElementById("inputMeal").value;
   getMeals(inputMeal);
   document.getElementById("inputMeal").value = "";
 };
 
+const errorHandler = () => {
+  document.getElementById("search-error").style.display = "block";
+};
+
 const displayMeals = (data) => {
-  console.log(data);
+  document.getElementById("search-error").style.display = "none";
   const mealsDiv = document.getElementById("meals");
   mealsDiv.innerHTML = "";
-  document.getElementById("mealDetails").innerHTML ="";
+  document.getElementById("mealDetails").innerHTML = "";
+
   data.meals.forEach((meal) => {
+    const { strMeal, strMealThumb } = meal;
     const mealDiv = document.createElement("div");
     mealDiv.className = "meal";
     mealDiv.innerHTML = `
-       <a href="#site-title">
-        <div onclick="displayMealDetails('${meal.strMeal}')">
-          <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-          <h3 class="meal-name">${meal.strMeal}</h3>
+       <a href="#top">
+        <div onclick="displayMealDetails('${strMeal}')">
+          <img src="${strMealThumb}" alt="${strMeal}">
+          <h3 class="meal-name">${strMeal}</h3>
         </div>
         </a>
       `;
     mealsDiv.appendChild(mealDiv);
   });
-  document.getElementById("search-error").style.display = "none";
 };
 
 const displayMealDetails = (name) => {
@@ -45,37 +46,32 @@ const displayMealDetails = (name) => {
 };
 
 const renderMealIngredients = (meal) => {
-  console.log(meal);
+  const { strMeal, strMealThumb } = meal;
   const mealDetails = document.getElementById("mealDetails");
+
   mealDetails.innerHTML = `
       <div class="meal-details-card">
-        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-        <div class="meal-info">
-           <h3>${meal.strMeal}</h3>
+        <img src="${strMealThumb}" alt="${strMeal}">
+         <div class="meal-info">
+           <h3>${strMeal}</h3>
            <h4>Ingredients</h4>
            <ul class="ingredient-list">
-            <li>${meal.strIngredient1}</li>
-            <li>${meal.strIngredient2}</li>
-            <li>${meal.strIngredient3}</li>
-            <li>${meal.strIngredient4}</li>
-            <li>${meal.strIngredient5}</li>
-            <li>${meal.strIngredient6}</li>
-            <li>${meal.strIngredient7}</li>
-            <li>${meal.strIngredient8}</li>
-            <li>${meal.strIngredient9}</li>
-            <li>${meal.strIngredient10}</li>
-            <li>${meal.strIngredient11}</li>
-            <li>${meal.strIngredient12}</li>
-            <li>${meal.strIngredient13}</li>
-            <li>${meal.strIngredient14}</li>
-            <li>${meal.strIngredient15}</li>
-            <li>${meal.strIngredient16}</li>
-            <li>${meal.strIngredient17}</li>
-            <li>${meal.strIngredient18}</li>
-            <li>${meal.strIngredient19}</li>
-            <li>${meal.strIngredient20}</li>
-        </ul>
-      </div>
+             ${displayIngredientsList(meal)}
+           </ul>
+         </div>
       </div>
     `;
+};
+
+const displayIngredientsList = (list) => {
+  let ingredients = "";
+  for (let i = 1; i < 21; i++) {
+    ingredients +=
+      list["strIngredient" + i] != "" || null
+        ? `<li><i class="far fa-check-square"></i>${
+            list["strIngredient" + i]
+          }</li>`
+        : "";
+  }
+  return ingredients;
 };
