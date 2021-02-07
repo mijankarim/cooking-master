@@ -9,13 +9,35 @@ html { scroll-behavior: smooth; }
 
 .container {
   max-width: 1200px;
-  margin: 50px auto;
+  margin: 10px auto 50px;
+}
+
+.header{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+nav ul{
+  display:flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+
+nav ul li{
+  margin-left:20px;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: #3b2d64;
+  
 }
 
 .site-title {
   color: #3b2d64;
-  margin-bottom: 50px;
-  text-align: center;
+  margin-bottom: 20px;
+  margin-top:16px;
+  text-align: left;
 }
 
 .site-title a {
@@ -26,11 +48,15 @@ html { scroll-behavior: smooth; }
 #search-box {
   max-width: 535px;
   width: 100%;
-  margin: 0 auto;
+  margin: 50px auto 30px;
+  
+}
+
+.seach-box-container{
   display: flex;
 }
 
-#search-box input {
+.seach-box-container input {
   width: 70%;
   padding: 15px 10px;
   font-size: 16px;
@@ -47,6 +73,11 @@ html { scroll-behavior: smooth; }
   border-radius: 0 5px 5px 0;
   font-size: 16px;
   cursor: pointer;
+}
+
+#empty-notification p{
+  text-align:center;
+  font-size:18px;
 }
 
 #meals {
@@ -108,10 +139,6 @@ html { scroll-behavior: smooth; }
   text-align: center;
 }
 
-#search-error {
-  display: none;
-}
-
 .ingredient-list {
   padding-left: 0;
   list-style-position: inside;
@@ -136,5 +163,18 @@ html { scroll-behavior: smooth; }
 @media screen and (max-width: 576px) {
   #meals {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .header{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .site-title{
+    text-align: center;
+  }
+  nav ul{
+    justify-content: center;
+    padding-left:0;
+  }
+  nav ul li{
+    margin:15px;
   }
 }

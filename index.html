@@ -12,13 +12,31 @@
 </head>
 <body id="top">
     <div class="container">
-        <h1 class="site-title"><a href="/cooking-master">Cooking Master</a></h1>
+        <div class="header">
+            <div class="logo">
+                <h1 class="site-title"><a href="/cooking-master">Cooking master</a></h1>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="/cooking-master">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
         <div id="search-box">
+            <div class="seach-box-container">
             <input type="text" id="inputMeal" placeholder="Search for meal...">
             <button class="submitBtn" onclick="submitHandler()" type="submit">Search</button>
         </div>
+            <div id="empty-notification"></div>
+        </div>
         <div id="search-error">
-            <h3 class="error-message">Meal you are looking is not found</h3>
+            
         </div>
         <div id="mealDetails"></div>
         <div id="meals"></div>

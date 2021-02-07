@@ -7,20 +7,28 @@ const getMeals = (name) => {
 
 const submitHandler = () => {
   inputMeal = document.getElementById("inputMeal").value;
-  getMeals(inputMeal);
+  inputMeal != "" ? getMeals(inputMeal) : emptyNotification();
   document.getElementById("inputMeal").value = "";
 };
 
+const emptyNotification = () => {
+    document.getElementById("search-error").innerHTML = '';
+    document.getElementById("empty-notification").innerHTML =`
+    <p>Search field is empty! Enter a meal!</p>
+    `; 
+}
+
 const errorHandler = () => {
-  document.getElementById("search-error").style.display = "block";
+  document.getElementById("search-error").innerHTML = `
+  <h3 class="error-message">Oh snap! We can't find it. Try another meal.</h3>`;
 };
 
 const displayMeals = (data) => {
-  document.getElementById("search-error").style.display = "none";
+  document.getElementById("search-error").innerHTML = "";
   const mealsDiv = document.getElementById("meals");
   mealsDiv.innerHTML = "";
   document.getElementById("mealDetails").innerHTML = "";
-
+  document.getElementById("empty-notification").innerHTML ="";
   data.meals.forEach((meal) => {
     const { strMeal, strMealThumb } = meal;
     const mealDiv = document.createElement("div");
@@ -48,7 +56,6 @@ const displayMealDetails = (name) => {
 const renderMealIngredients = (meal) => {
   const { strMeal, strMealThumb } = meal;
   const mealDetails = document.getElementById("mealDetails");
-
   mealDetails.innerHTML = `
       <div class="meal-details-card">
         <img src="${strMealThumb}" alt="${strMeal}">
