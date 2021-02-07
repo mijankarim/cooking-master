@@ -12,11 +12,11 @@ const submitHandler = () => {
 };
 
 const emptyNotification = () => {
-    document.getElementById("search-error").innerHTML = '';
-    document.getElementById("empty-notification").innerHTML =`
+  document.getElementById("search-error").innerHTML = "";
+  document.getElementById("empty-notification").innerHTML = `
     <p>Search field is empty! Enter a meal!</p>
-    `; 
-}
+    `;
+};
 
 const errorHandler = () => {
   document.getElementById("search-error").innerHTML = `
@@ -28,7 +28,7 @@ const displayMeals = (data) => {
   const mealsDiv = document.getElementById("meals");
   mealsDiv.innerHTML = "";
   document.getElementById("mealDetails").innerHTML = "";
-  document.getElementById("empty-notification").innerHTML ="";
+  document.getElementById("empty-notification").innerHTML = "";
   data.meals.forEach((meal) => {
     const { strMeal, strMealThumb } = meal;
     const mealDiv = document.createElement("div");
@@ -73,12 +73,16 @@ const renderMealIngredients = (meal) => {
 const displayIngredientsList = (list) => {
   let ingredients = "";
   for (let i = 1; i < 21; i++) {
-    ingredients +=
-      list["strIngredient" + i] != "" || null
-        ? `<li><i class="far fa-check-square"></i>${
-            list["strIngredient" + i]
-          }</li>`
-        : "";
+    if (
+      list["strIngredient" + i] === "" ||
+      list["strIngredient" + i] === null
+    ) {
+      ingredients += ``;
+    } else {
+      ingredients += `<li><i class="far fa-check-square"></i>${
+        list["strIngredient" + i]
+      }</li>`;
+    }
   }
   return ingredients;
 };
